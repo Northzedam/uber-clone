@@ -8,6 +8,15 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import 'intl'
+import "intl/locale-data/jsonp/en";
+
+if (Platform.OS === "android") {
+   // See https://github.com/expo/expo/issues/6536 for this issue. 
+   if (typeof (Intl)._disableRegExpRestore === "function") {
+      (Intl)._disableRegExpRestore();
+    }
+}
 
 export default function App() {
   const Stack = createStackNavigator();
